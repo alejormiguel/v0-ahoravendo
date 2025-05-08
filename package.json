@@ -58,11 +58,11 @@
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.6",
     "zod": "latest",
-    "prisma": "latest",
     "@prisma/client": "latest",
     "next-auth": "latest",
     "@auth/core": "latest",
     "nodemailer": "latest",
+    "prisma": "latest",
     "@next-auth/prisma-adapter": "latest",
     "bcryptjs": "latest",
     "uuid": "latest"
