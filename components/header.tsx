@@ -7,7 +7,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
 import { signOut, useSession } from "next-auth/react"
-import { Search, MapPin, User, ShoppingCart, Heart, Menu, X, ChevronDown } from "lucide-react"
+import { Search, MapPin, User, Heart, Menu, X, ChevronDown } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -19,6 +19,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { PostalCodeModal } from "@/components/postal-code-modal"
+import { ShoppingBagIcon } from "@/components/icons/shopping-bag"
 
 export function Header() {
   const { data: session } = useSession()
@@ -128,7 +129,9 @@ export function Header() {
             {/* Cart and wishlist */}
             <div className="flex items-center gap-4">
               <Link href="/cart" className="relative">
-                <ShoppingCart className="h-6 w-6" />
+                <div className="p-1.5 border border-white rounded-md">
+                  <ShoppingBagIcon className="h-5 w-5" />
+                </div>
                 <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-yellow-400 text-xs font-bold text-black">
                   3
                 </span>
