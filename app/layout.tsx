@@ -14,8 +14,8 @@ import AuthProvider from "@/components/auth-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "AmazonClone - Your One-Stop Shop",
-  description: "An e-commerce platform similar to Amazon",
+  title: "Ahora Vendo - Tu Tienda Online",
+  description: "Plataforma de comercio electrónico para comprar y vender productos",
     generator: 'v0.dev'
 }
 
@@ -27,13 +27,13 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions)
 
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={inter.className}>
         <AuthProvider session={session}>
           <ThemeProvider attribute="class" defaultTheme="light">
             <div className="flex min-h-screen flex-col">
               <Header />
-              <main className="flex-1">{children}</main>
+              <main className="flex-1 bg-gray-50">{children}</main>
               <Footer />
             </div>
             <Toaster />
