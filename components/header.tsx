@@ -18,6 +18,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { PostalCodeModal } from "@/components/postal-code-modal"
 
 export function Header() {
   const { data: session } = useSession()
@@ -25,6 +26,8 @@ export function Header() {
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
+  const [isPostalCodeModalOpen, setIsPostalCodeModalOpen] = useState(false)
+  const [selectedPostalCode, setSelectedPostalCode] = useState("")
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,6 +38,10 @@ export function Header() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
+  }
+
+  const handleSelectPostalCode = (postalCode: string) => {
+    setSelectedPostalCode(postalCode)
   }
 
   return (
@@ -51,7 +58,9 @@ export function Header() {
           <div className="hidden md:flex items-center gap-2 text-sm">
             <MapPin className="h-4 w-4" />
             <span>Enviar a</span>
-            <button className="flex items-center font-medium">Seleccionar CP</button>
+            <button className="flex items-center font-medium" onClick={() => setIsPostalCodeModalOpen(true)}>
+              {selectedPostalCode || "Seleccionar CP"}
+            </button>
           </div>
 
           {/* Search bar */}
@@ -185,7 +194,15 @@ export function Header() {
               <div className="flex items-center gap-2 text-sm">
                 <MapPin className="h-4 w-4" />
                 <span>Enviar a</span>
-                <button className="flex items-center font-medium">Seleccionar CP</button>
+                <button
+                  className="flex items-center font-medium"
+                  onClick={() => {
+                    setIsPostalCodeModalOpen(true)
+                    setIsMenuOpen(false)
+                  }}
+                >
+                  {selectedPostalCode || "Seleccionar CP"}
+                </button>
               </div>
               <div className="space-y-4">
                 <Link href="/categories" className="block text-lg">
@@ -226,6 +243,13 @@ export function Header() {
           </div>
         </div>
       )}
+
+      {/* Postal Code Modal */}
+      <PostalCodeModal
+        open={isPostalCodeModalOpen}
+        onOpenChange={setIsPostalCodeModalOpen}
+        onSelectPostalCode={handleSelectPostalCode}
+      />
     </header>
   )
 }
