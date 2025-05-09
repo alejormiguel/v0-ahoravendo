@@ -7,7 +7,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
 import { signOut, useSession } from "next-auth/react"
-import { Search, MapPin, User, Heart, Menu, X, ChevronDown } from "lucide-react"
+import { Search, MapPin, User, Menu, X, ChevronDown } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -20,6 +20,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { PostalCodeModal } from "@/components/postal-code-modal"
 import { ShoppingBagIcon } from "@/components/icons/shopping-bag"
+import { HeartIcon } from "@/components/icons/heart-icon"
+import { BellIcon } from "@/components/icons/bell-icon"
 
 export function Header() {
   const { data: session } = useSession()
@@ -126,8 +128,19 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Cart and wishlist */}
+            {/* Icons: Notifications, Cart and Wishlist */}
             <div className="flex items-center gap-4">
+              {/* Notifications Bell */}
+              <Link href="/avisos" className="relative">
+                <div className="p-1.5 border border-white rounded-md">
+                  <BellIcon className="h-5 w-5" />
+                </div>
+                <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-yellow-400 text-xs font-bold text-black">
+                  4
+                </span>
+              </Link>
+
+              {/* Shopping Bag */}
               <Link href="/cart" className="relative">
                 <div className="p-1.5 border border-white rounded-md">
                   <ShoppingBagIcon className="h-5 w-5" />
@@ -136,8 +149,12 @@ export function Header() {
                   3
                 </span>
               </Link>
+
+              {/* Wishlist Heart */}
               <Link href="/wishlist" className="relative">
-                <Heart className="h-6 w-6" />
+                <div className="p-1.5 border border-white rounded-md">
+                  <HeartIcon className="h-5 w-5" />
+                </div>
                 <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-yellow-400 text-xs font-bold text-black">
                   2
                 </span>
@@ -216,6 +233,9 @@ export function Header() {
                 </Link>
                 <Link href="/new" className="block text-lg">
                   Novedades
+                </Link>
+                <Link href="/avisos" className="block text-lg">
+                  Avisos
                 </Link>
               </div>
               <div className="pt-4 border-t border-gray-800">
