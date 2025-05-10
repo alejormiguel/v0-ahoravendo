@@ -6,6 +6,7 @@ import { ProductCard } from "@/components/product-card"
 import { CategoryShowcase } from "@/components/category-showcase"
 import { PromoBanner } from "@/components/promo-banner"
 import { CategoryCardsGrid } from "@/components/category-cards-grid"
+import { ProductRecommendations } from "@/components/product-recommendations"
 import { Button } from "@/components/ui/button"
 
 export default async function Home() {
@@ -89,6 +90,9 @@ export default async function Home() {
 
       {/* Category Cards Grid */}
       <CategoryCardsGrid />
+
+      {/* Product Recommendations */}
+      <ProductRecommendations />
 
       <section className="container">
         <div className="rounded-lg bg-muted p-8">
