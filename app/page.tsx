@@ -15,8 +15,8 @@ export default async function Home() {
 
   const carouselImages = [
     {
-      src: "/placeholder.svg?height=600&width=1400",
-      alt: "Special offers on electronics",
+      src: "/images/carousel-img1.png",
+      alt: "Transparencia Total - lo que ves es lo que pagas",
     },
     {
       src: "/placeholder.svg?height=600&width=1400",
