@@ -11,7 +11,7 @@ export default async function Home() {
 
   const carouselImages = [
     {
-      src: "/placeholder.svg?height=600&width=1400",
+      src: "/carousel-img1.png",
       alt: "Special offers on electronics",
     },
     {
