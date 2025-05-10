@@ -7,67 +7,18 @@ export function SellerOnboarding() {
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         {/* Main heading */}
-        <h2 className="text-4xl font-bold text-center text-purple-600 mb-16">¿Cómo comienzo a ganar?</h2>
+        <h2 className="text-4xl font-bold text-center text-purple-600 mb-10">¿Cómo comienzo a ganar?</h2>
 
-        {/* Three steps */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {/* Step 1 */}
-          <div className="flex flex-col items-center">
-            <div className="bg-fuchsia-500 text-white rounded-full p-6 w-64 h-64 flex flex-col items-center justify-center mb-4 relative">
-              <span className="text-xl font-bold mb-2">Registrate</span>
-              <div className="relative w-48 h-48">
-                <Image
-                  src="/images/register-illustration.png"
-                  alt="Registrate"
-                  width={200}
-                  height={200}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Connector */}
-          <div className="hidden md:flex items-center justify-center">
-            <div className="w-24 h-1 bg-gradient-to-r from-teal-400 to-fuchsia-500"></div>
-          </div>
-
-          {/* Step 2 */}
-          <div className="flex flex-col items-center">
-            <div className="bg-fuchsia-500 text-white rounded-full p-6 w-64 h-64 flex flex-col items-center justify-center mb-4 relative">
-              <span className="text-xl font-bold mb-2">Configurá tu cuenta</span>
-              <div className="relative w-48 h-48">
-                <Image
-                  src="/images/configure-account-illustration.png"
-                  alt="Configurá tu cuenta"
-                  width={200}
-                  height={200}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Connector */}
-          <div className="hidden md:flex items-center justify-center">
-            <div className="w-24 h-1 bg-gradient-to-r from-fuchsia-500 to-fuchsia-500"></div>
-          </div>
-
-          {/* Step 3 */}
-          <div className="flex flex-col items-center">
-            <div className="bg-fuchsia-500 text-white rounded-full p-6 w-64 h-64 flex flex-col items-center justify-center mb-4 relative">
-              <span className="text-xl font-bold mb-2">Vendé tus productos</span>
-              <div className="relative w-48 h-48">
-                <Image
-                  src="/images/sell-products-illustration.png"
-                  alt="Vendé tus productos"
-                  width={200}
-                  height={200}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-          </div>
+        {/* Steps image */}
+        <div className="max-w-5xl mx-auto mb-16">
+          <Image
+            src="/images/como-comienzo-ganar.png"
+            alt="Pasos para comenzar: Registrate, Configurá tu cuenta, Vendé tus productos"
+            width={1200}
+            height={350}
+            className="w-full h-auto"
+            priority
+          />
         </div>
 
         {/* Text content */}
@@ -105,10 +56,10 @@ export function SellerOnboarding() {
             </div>
             <div className="relative w-64 h-32">
               <Image
-                src="/images/start-selling-illustration.png"
+                src="/images/empeza-hoy-mismo.png"
                 alt="Empezá a vender"
-                width={250}
-                height={125}
+                width={300}
+                height={150}
                 className="object-contain"
               />
             </div>

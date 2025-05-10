@@ -54,7 +54,7 @@ export function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image src="/av-ahora-vendo-logo.png" alt="Ahora Vendo" width={120} height={40} className="h-10" />
+            <Image src="/ahora-vendo-logo.png" alt="Ahora Vendo" width={120} height={40} className="h-10 w-auto" />
           </Link>
 
           {/* Location selector */}
@@ -191,7 +191,7 @@ export function Header() {
         <div className="fixed inset-0 z-50 bg-black md:hidden">
           <div className="container flex h-16 items-center justify-between">
             <Link href="/" className="flex items-center">
-              <Image src="/av-ahora-vendo-logo.png" alt="Ahora Vendo" width={120} height={40} className="h-10" />
+              <Image src="/ahora-vendo-logo.png" alt="Ahora Vendo" width={120} height={40} className="h-10 w-auto" />
             </Link>
             <Button variant="ghost" size="icon" onClick={toggleMenu}>
               <X className="h-6 w-6" />
