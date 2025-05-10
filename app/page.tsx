@@ -7,6 +7,7 @@ import { CategoryShowcase } from "@/components/category-showcase"
 import { PromoBanner } from "@/components/promo-banner"
 import { CategoryCardsGrid } from "@/components/category-cards-grid"
 import { ProductRecommendations } from "@/components/product-recommendations"
+import { SellerOnboarding } from "@/components/seller-onboarding"
 import { Button } from "@/components/ui/button"
 
 export default async function Home() {
@@ -93,6 +94,9 @@ export default async function Home() {
 
       {/* Product Recommendations */}
       <ProductRecommendations />
+
+      {/* Seller Onboarding */}
+      <SellerOnboarding />
 
       <section className="container">
         <div className="rounded-lg bg-muted p-8">
