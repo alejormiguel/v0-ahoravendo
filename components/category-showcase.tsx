@@ -22,22 +22,14 @@ export function CategoryShowcase({ categories }: CategoryShowcaseProps) {
             <Link key={category.id} href={category.href} className="group">
               <div className="flex flex-col items-center">
                 <div className="relative w-full aspect-square max-w-[200px] mx-auto">
-                  {/* Gradient border with platform */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-teal-400 rounded-full p-1">
-                    <div className="h-full w-full rounded-full bg-white overflow-hidden flex items-end justify-center">
-                      {/* Gray platform */}
-                      <div className="w-full h-1/4 bg-gray-300 absolute bottom-0"></div>
-
-                      {/* Category image */}
-                      <Image
-                        src={category.image || "/placeholder.svg"}
-                        alt={category.name}
-                        width={150}
-                        height={150}
-                        className="relative z-10 w-3/4 h-3/4 object-contain mb-4 transition-transform group-hover:scale-110"
-                      />
-                    </div>
-                  </div>
+                  {/* Category image without rounded divs */}
+                  <Image
+                    src={category.image || "/placeholder.svg"}
+                    alt={category.name}
+                    width={200}
+                    height={200}
+                    className="w-full h-auto transition-transform group-hover:scale-105"
+                  />
                 </div>
                 <span className="mt-3 text-center font-medium">{category.name}</span>
               </div>
