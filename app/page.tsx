@@ -32,7 +32,7 @@ export default async function Home() {
     {
       id: "electronics",
       name: "Electrónicos",
-      image: "/purple-smartphone.png",
+      image: "/images/category-electronics.png",
       href: "/categories/electronics",
     },
     {
