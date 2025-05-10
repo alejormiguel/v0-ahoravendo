@@ -3,6 +3,7 @@ import Link from "next/link"
 import { getFeaturedProducts } from "@/app/actions/products"
 import { Carousel } from "@/components/carousel"
 import { ProductCard } from "@/components/product-card"
+import { CategoryShowcase } from "@/components/category-showcase"
 import { Button } from "@/components/ui/button"
 
 export default async function Home() {
@@ -23,6 +24,39 @@ export default async function Home() {
     },
   ]
 
+  const categories = [
+    {
+      id: "electronics",
+      name: "Electrónicos",
+      image: "/purple-smartphone.png",
+      href: "/categories/electronics",
+    },
+    {
+      id: "clothing",
+      name: "Ropa",
+      image: "/purple-shirt.png",
+      href: "/categories/clothing",
+    },
+    {
+      id: "furniture",
+      name: "Muebles",
+      image: "/pink-armchair.png",
+      href: "/categories/furniture",
+    },
+    {
+      id: "audio",
+      name: "Audio",
+      image: "/purple-speaker.png",
+      href: "/categories/audio",
+    },
+    {
+      id: "beauty",
+      name: "Belleza",
+      image: "/makeup-compact.png",
+      href: "/categories/beauty",
+    },
+  ]
+
   return (
     <div className="flex flex-col gap-8 pb-8">
       <Carousel images={carouselImages} />
@@ -40,6 +74,9 @@ export default async function Home() {
           ))}
         </div>
       </section>
+
+      {/* New Category Showcase Section */}
+      <CategoryShowcase categories={categories} />
 
       <section className="container">
         <div className="rounded-lg bg-muted p-8">
