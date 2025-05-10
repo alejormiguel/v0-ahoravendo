@@ -137,7 +137,7 @@ const Carousel = React.forwardRef<
         <div
           ref={ref}
           onKeyDownCapture={handleKeyDown}
-          className={cn("relative", "container", "p-0", className)}
+          className={cn("relative", className)}
           role="region"
           aria-roledescription="carousel"
           {...props}

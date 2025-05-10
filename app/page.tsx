@@ -4,6 +4,8 @@ import { getFeaturedProducts } from "@/app/actions/products"
 import { Carousel } from "@/components/carousel"
 import { ProductCard } from "@/components/product-card"
 import { CategoryShowcase } from "@/components/category-showcase"
+import { PromoBanner } from "@/components/promo-banner"
+import { CategoryCardsGrid } from "@/components/category-cards-grid"
 import { Button } from "@/components/ui/button"
 
 export default async function Home() {
@@ -11,7 +13,7 @@ export default async function Home() {
 
   const carouselImages = [
     {
-      src: "/carousel-img1.png",
+      src: "/placeholder.svg?height=600&width=1400",
       alt: "Special offers on electronics",
     },
     {
@@ -75,8 +77,18 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* New Category Showcase Section */}
+      {/* Category Showcase Section */}
       <CategoryShowcase categories={categories} />
+
+      {/* Promotional Banner */}
+      <PromoBanner
+        text="Obtené un voucher de 10% OFF en tu primer compra registrándote en la plataforma"
+        linkText="Suscríbite"
+        linkHref="/register"
+      />
+
+      {/* Category Cards Grid */}
+      <CategoryCardsGrid />
 
       <section className="container">
         <div className="rounded-lg bg-muted p-8">

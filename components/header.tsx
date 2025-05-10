@@ -54,7 +54,7 @@ export function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image src="/ahora-vendo-logo.png" alt="Ahora Vendo" width={120} height={40} className="h-10" />
+            <Image src="/av-ahora-vendo-logo.png" alt="Ahora Vendo" width={120} height={40} className="h-10" />
           </Link>
 
           {/* Location selector */}
