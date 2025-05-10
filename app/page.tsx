@@ -38,25 +38,25 @@ export default async function Home() {
     {
       id: "clothing",
       name: "Ropa",
-      image: "/purple-shirt.png",
+      image: "/images/category-clothing.png",
       href: "/categories/clothing",
     },
     {
       id: "furniture",
       name: "Muebles",
-      image: "/pink-armchair.png",
+      image: "/images/category-furniture.png",
       href: "/categories/furniture",
     },
     {
       id: "audio",
       name: "Audio",
-      image: "/purple-speaker.png",
+      image: "/images/category-audio.png",
       href: "/categories/audio",
     },
     {
       id: "beauty",
       name: "Belleza",
-      image: "/makeup-compact.png",
+      image: "/images/category-beauty.png",
       href: "/categories/beauty",
     },
   ]

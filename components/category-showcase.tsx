@@ -21,16 +21,14 @@ export function CategoryShowcase({ categories }: CategoryShowcaseProps) {
           {categories.map((category) => (
             <Link key={category.id} href={category.href} className="group">
               <div className="flex flex-col items-center">
-                <div className="relative w-full aspect-square max-w-[200px] mx-auto">
-                  {/* Category image without rounded divs */}
-                  <Image
-                    src={category.image || "/placeholder.svg"}
-                    alt={category.name}
-                    width={200}
-                    height={200}
-                    className="w-full h-auto transition-transform group-hover:scale-105"
-                  />
-                </div>
+                {/* Category image without rounded divs */}
+                <Image
+                  src={category.image || "/placeholder.svg"}
+                  alt={category.name}
+                  width={200}
+                  height={200}
+                  className="w-full h-auto transition-transform group-hover:scale-105"
+                />
                 <span className="mt-3 text-center font-medium">{category.name}</span>
               </div>
             </Link>
