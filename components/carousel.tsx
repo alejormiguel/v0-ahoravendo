@@ -38,7 +38,7 @@ export function Carousel({ images, autoPlay = true, interval = 5000 }: CarouselP
   }, [autoPlay, interval])
 
   return (
-    <div className="relative overflow-hidden rounded-lg">
+    <div className="relative container p-0 overflow-hidden rounded-lg">
       <div
         className="flex transition-transform duration-500 ease-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
