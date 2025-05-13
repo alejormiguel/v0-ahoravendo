@@ -53,7 +53,7 @@ export function Header() {
       <div className="w-full bg-fuchsia-700 text-white py-2">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
-            {/* Logo - removed the AHORA VENDO text span */}
+            {/* Logo */}
             <Link href="/" className="flex items-center">
               <Image src="/ahora-vendo-logo.png" alt="Ahora Vendo" width={50} height={30} className="h-8 w-auto" />
             </Link>
@@ -102,9 +102,9 @@ export function Header() {
 
             {/* Icons: Notifications, Cart and Wishlist */}
             <div className="flex items-center gap-4">
-              {/* Shopping Bag */}
+              {/* Shopping Bag - with white border and rounded corners */}
               <Link href="/cart" className="relative">
-                <div className="p-1.5 text-white">
+                <div className="p-1.5 text-white border border-white rounded-lg">
                   <ShoppingBag className="h-6 w-6" />
                 </div>
                 <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-yellow-400 text-xs font-bold text-black">
@@ -112,9 +112,9 @@ export function Header() {
                 </span>
               </Link>
 
-              {/* Wishlist Heart */}
+              {/* Wishlist Heart - with white border and rounded corners */}
               <Link href="/wishlist" className="relative">
-                <div className="p-1.5 text-white">
+                <div className="p-1.5 text-white border border-white rounded-lg">
                   <Heart className="h-6 w-6" />
                 </div>
                 <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-yellow-400 text-xs font-bold text-black">
@@ -122,9 +122,9 @@ export function Header() {
                 </span>
               </Link>
 
-              {/* Notifications Bell */}
+              {/* Notifications Bell - with white border and rounded corners */}
               <Link href="/avisos" className="relative">
-                <div className="p-1.5 text-white">
+                <div className="p-1.5 text-white border border-white rounded-lg">
                   <Bell className="h-6 w-6" />
                 </div>
                 <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-yellow-400 text-xs font-bold text-black">
