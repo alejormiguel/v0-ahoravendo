@@ -62,7 +62,7 @@ export default async function Home() {
   ]
 
   return (
-    <div className="flex flex-col gap-8 pb-8">
+    <div className="flex flex-col gap-8 pb-8 mt-4">
       <Carousel images={carouselImages} />
 
       <section className="container">
