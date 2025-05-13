@@ -53,10 +53,9 @@ export function Header() {
       <div className="w-full bg-fuchsia-700 text-white py-2">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
-            {/* Logo */}
+            {/* Logo - removed the AHORA VENDO text span */}
             <Link href="/" className="flex items-center">
               <Image src="/ahora-vendo-logo.png" alt="Ahora Vendo" width={50} height={30} className="h-8 w-auto" />
-              <span className="ml-2 text-xl font-bold tracking-tight text-white">AHORA VENDO</span>
             </Link>
 
             {/* Location selector */}
