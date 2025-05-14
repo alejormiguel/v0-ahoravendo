@@ -32,8 +32,15 @@ export function Header() {
 
   return (
     <header className="w-full">
-      {/* Location banner */}
-      <div className="w-full bg-fuchsia-600 text-white py-2 relative overflow-hidden">
+      {/* Location banner with background image */}
+      <div
+        className="w-full text-white py-2 relative overflow-hidden"
+        style={{
+          backgroundImage: "url(/images/header-postalcode-background.png)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="container mx-auto px-4 flex items-center justify-between relative z-10">
           <p className="text-sm md:text-base">
             ¡Seleccioná tu ubicación y conocé los productos, promociones y oportunidades más cercanas a vos!
@@ -55,7 +62,7 @@ export function Header() {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <Image src="/ahora-vendo-logo.png" alt="Ahora Vendo" className="h-12 w-auto" />
+              <Image src="/ahora-vendo-logo.png" alt="Ahora Vendo" width={50} height={30} className="h-8 w-auto" />
             </Link>
 
             {/* Location selector */}
