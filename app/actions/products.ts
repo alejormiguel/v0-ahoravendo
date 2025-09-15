@@ -18,10 +18,46 @@ export async function getProductsByCategory(categoryId: string) {
 }
 
 export async function getProductById(id: string) {
-  return prisma.product.findUnique({
+  const data = await prisma.product.findUnique({
     where: { id },
-    include: { category: true },
-  })
+    include: { 
+      category: true, 
+      questions: {
+        orderBy: {
+          createdAt: 'desc',
+        },
+      }, 
+      reviews: {
+        orderBy: {
+          createdAt: 'desc',
+        },
+      }, 
+      seller: true, 
+      variations: { 
+        orderBy: {
+          displayPosition: 'asc',
+        },
+        include: { 
+          options: {
+            orderBy: {
+              displayPosition: 'asc',
+            } 
+          } 
+        } 
+      },
+      specifications: { 
+        orderBy: {
+          displayPosition: 'asc',
+        }
+      }
+  },});
+  const serializedData = {
+    ...data,
+    // originalPrice: data?.originalPrice ? data.originalPrice.toString() : "0.00",
+    // price: data?.price ? data.price.toString() : "0.00",
+    images: data?.images || [],
+  };
+  return serializedData;
 }
 
 export async function getAllCategories() {
@@ -36,6 +72,36 @@ export async function searchProducts(query: string) {
         { description: { contains: query, mode: "insensitive" } },
       ],
     },
-    include: { category: true },
+    include: { 
+      category: true,
+      questions: {
+        orderBy: {
+          createdAt: 'desc',
+        },
+      }, 
+      reviews: {
+        orderBy: {
+          createdAt: 'desc',
+        },
+      }, 
+      seller: true, 
+      variations: { 
+        orderBy: {
+          displayPosition: 'asc',
+        },
+        include: { 
+          options: {
+            orderBy: {
+              displayPosition: 'asc',
+            } 
+          } 
+        } 
+      },
+      specifications: { 
+        orderBy: {
+          displayPosition: 'asc',
+        }
+      }
+    },
   })
 }

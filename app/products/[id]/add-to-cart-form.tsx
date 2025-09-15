@@ -61,8 +61,8 @@ export function AddToCartForm({ product }: AddToCartFormProps) {
       })
     } else {
       toast({
-        title: "Success",
-        description: `${product.name} added to your cart.`,
+        title: "Éxito",
+        description: `${product.name} agregado a su carrito de compras.`,
       })
       router.refresh()
     }

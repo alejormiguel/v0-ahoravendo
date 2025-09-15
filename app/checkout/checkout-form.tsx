@@ -32,15 +32,15 @@ export function CheckoutForm() {
       toast({
         variant: "destructive",
         title: "Error",
-        description: typeof result.error === "string" ? result.error : "Please check your information and try again.",
+        description: typeof result.error === "string" ? result.error : "Por favor chequee su información y vuelva a intentarlo.",
       })
       setIsLoading(false)
       return
     }
 
     toast({
-      title: "Order placed",
-      description: "Your order has been placed successfully.",
+      title: "Orden enviada",
+      description: "Su orden ha sido enviada exitosamente.",
     })
 
     router.push(`/orders/${result.orderId}`)

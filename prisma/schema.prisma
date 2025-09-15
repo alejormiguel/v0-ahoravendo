@@ -61,20 +61,89 @@ model VerificationToken {
 }
 
 model Product {
-  id          String   @id @default(cuid())
-  name        String
-  description String   @db.Text
-  price       Decimal  @db.Decimal(10, 2)
-  images      String[]
-  stock       Int
-  category    Category @relation(fields: [categoryId], references: [id])
-  categoryId  String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  cartItems   CartItem[]
-  orderItems  OrderItem[]
-  featured    Boolean  @default(false)
+  id              String   @id @default(cuid())
+  name            String
+  description     String   @db.Text
+  faq             String   @db.Text
+  rating          Decimal  @db.Decimal(2, 1) @default(0.0)
+  ratingCount     Int      @default(0)
+  originalPrice   Decimal  @db.Decimal(11, 2)
+  discount        Decimal  @db.Decimal(5, 2)
+  finalPrice      Decimal  @db.Decimal(11, 2)
+  noTaxesPrice    Decimal  @db.Decimal(11, 2)
+  taxes           Decimal  @db.Decimal(11, 2)
+  images          String[]
+  questions       ProductQuestion[]
+  reviews         ProductReview[]
+  stock           Int
+  category        Category @relation(fields: [categoryId], references: [id])
+  categoryId      String
+  variations      ProductVariation[]
+  specifications  ProductSpecification[]
+  seller          Seller @relation(fields: [sellerId], references: [id])
+  sellerId        String
+  shippingOptions ProductShippingOption[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  cartItems       CartItem[]
+  orderItems      OrderItem[]
+  featured        Boolean  @default(false)
 }
+
+model ProductQuestion {
+  id        String  @id @default(cuid())
+  question  String  @db.Text
+  answer    String? @db.Text
+  product   Product  @relation(fields: [productId], references: [id])
+  productId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+} 
+
+model ProductReview {
+  id        String  @id @default(cuid())
+  rating    Int     @default(0)
+  comment   String  @db.Text
+  product   Product  @relation(fields: [productId], references: [id])
+  productId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+} 
+
+model ProductVariation {
+  id              String  @id @default(cuid())
+  name            String  @db.Text
+  options         ProductVariationOption[]
+  product         Product @relation(fields: [productId], references: [id])
+  productId       String
+  displayPosition Int     @default(0)
+} 
+
+model ProductVariationOption {
+  id                  String  @id @default(cuid())
+  name                String  @db.Text
+  productVariation    ProductVariation  @relation(fields: [productVariationId], references: [id])
+  productVariationId  String
+  displayPosition     Int     @default(0)
+} 
+
+model ProductSpecification {
+  id              String  @id @default(cuid())
+  name            String  @db.Text
+  value           String  @db.Text
+  product         Product @relation(fields: [productId], references: [id])
+  productId       String
+  displayPosition Int     @default(0)
+}
+
+model ProductShippingOption {
+  id                String    @id @default(cuid())
+  product           Product @relation(fields: [productId], references: [id])
+  productId         String
+  name              String    @unique
+  cost              Decimal   @db.Decimal(11, 2)
+}
+
 
 model Category {
   id       String    @id @default(cuid())
@@ -82,13 +151,33 @@ model Category {
   products Product[]
 }
 
+model Seller {
+  id              String    @id @default(cuid())
+  name            String    @unique
+  logo            String?   @db.Text
+  verified        Boolean   @default(false)
+  salesAmount     Int       @default(0)
+  invoiceTypes    String?   @db.Text
+  products        Product[]
+  shippingOptions SellerShippingOption[]  
+}
+
+model SellerShippingOption {
+  id            String    @id @default(cuid())
+  name          String    @unique
+  cost          Decimal   @db.Decimal(11, 2)
+  seller        Seller @relation(fields: [sellerId], references: [id])
+  sellerId      String
+}
+
 model Cart {
-  id        String     @id @default(cuid())
-  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId    String     @unique
-  items     CartItem[]
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
+  id            String    @id @default(cuid())
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        String    @unique
+  items         CartItem[]
+  shippingTotal Decimal   @db.Decimal(11, 2)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 }
 
 model CartItem {

@@ -18,20 +18,76 @@ export async function getCart() {
     include: {
       items: {
         include: {
-          product: true,
+          product: {
+            include: {
+              category: true,
+              seller: true,
+              shippingOptions: {
+                orderBy: {
+                  cost: 'asc',
+                },
+              }, 
+               variations: {
+                include: {
+                  options: true,
+                },
+              },
+              specifications: true,
+              reviews: true,
+              questions: true,
+            },
+          },
         },
       },
     },
   })
 
-  return cart
+  const cleanedCart = {
+    id: cart?.id || '',
+    items: cart?.items.map((item: any) => ({
+      id: item?.id,
+      quantity: item?.quantity,
+      product: item?.product && {
+        id: item.product.id,
+        name: item.product.name,
+        description: item.product.description,
+        faq: item.product.faq,
+        rating: Number(item.product.rating),
+        ratingCount: Number(item.product.ratingCount),
+        originalPrice: Number(item.product.originalPrice),
+        discount: Number(item.product.discount),
+        finalPrice: Number(item.product.finalPrice),
+        noTaxesPrice: Number(item.product.noTaxesPrice),
+        taxes: Number(item.product.taxes),
+        images: item.product.images,
+        stock: Number(item.product.stock),
+        categoryId: item.product.categoryId,
+        seller: {
+          id: item.product.seller?.id || '',
+          name: item.product.seller?.name || '',
+          verified: item.product.seller?.verified || false,
+        },
+        shippingOptions: item.product.shippingOptions.map((option: any) => ({
+          id: option.id,
+          name: option.name,
+          cost: Number(option.cost),
+        })) || [],
+      },
+    })) || [],
+    shippingTotal: Number(cart?.shippingTotal),
+    createdAt: cart?.createdAt,
+    updatedAt: cart?.updatedAt,
+    userId: cart?.userId
+  }
+
+  return cleanedCart
 }
 
 export async function addToCart(formData: FormData) {
   const session = await getServerSession(authOptions)
 
   if (!session?.user?.id) {
-    return { error: "You must be logged in" }
+    return { error: "Debe estar logueado" }
   }
 
   const productId = formData.get("productId") as string
@@ -39,7 +95,7 @@ export async function addToCart(formData: FormData) {
   const quantity = Number.parseInt(quantityStr, 10)
 
   if (!productId || isNaN(quantity) || quantity < 1) {
-    return { error: "Invalid product or quantity" }
+    return { error: "Producto o cantidad inválidos" }
   }
 
   // Check if product exists and has enough stock
@@ -48,11 +104,11 @@ export async function addToCart(formData: FormData) {
   })
 
   if (!product) {
-    return { error: "Product not found" }
+    return { error: "Producto no encontrado" }
   }
 
   if (product.stock < quantity) {
-    return { error: "Not enough stock" }
+    return { error: "No hay suficiente stock" }
   }
 
   // Get or create cart
@@ -97,10 +153,26 @@ export async function addToCart(formData: FormData) {
   return { success: true }
 }
 
+export async function updateShippingTotal(cartId: string, shippingTotal: number){
+  const session = await getServerSession(authOptions)
+
+  if (!session?.user?.id) {
+    console.log(session)
+    return { error: "You must be logged in" }
+  }
+
+  // Update shippingTotal
+  await prisma.cart.update({
+    where: { id: cartId },
+    data: { shippingTotal },
+  })
+}
+
 export async function updateCartItem(formData: FormData) {
   const session = await getServerSession(authOptions)
 
   if (!session?.user?.id) {
+    console.log(session)
     return { error: "You must be logged in" }
   }
 
